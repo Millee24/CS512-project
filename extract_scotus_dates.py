@@ -33,7 +33,10 @@ def main():
             line = [str(i)]
             #get name of case
             #line.append(f'"{row.get("name",[])}"')
-            line.append(row.get("name",[]))
+            #line.append(row.get("name",[]))
+            txt = row.get("name", [])
+            txt = txt.replace(",","")
+            line.append(txt)
             #first, get the timeline data as a list
             timeline = row.get("timeline", [])
             #print(timeline) #debug
@@ -52,10 +55,10 @@ def main():
     write_csv(scotus_dates, "scotus_dates.csv")
 
     #Convert CSV file to JSON file
-    csv_to_json("scotus_dates.csv", "scotus_dates_converted.json")
+    # csv_to_json("scotus_dates.csv", "scotus_dates_converted.json")
 
     #Convert JSON file to CSV file
-    json_to_csv("test.json", "scotus_dates_converted.csv")
+    # json_to_csv("test.json", "scotus_dates_converted.csv")
     #json_to_csv("scotus_dates_converted.json", "scotus_dates_converted.csv")
 
 def write_csv(data_list, outfile):
@@ -74,7 +77,7 @@ def write_csv(data_list, outfile):
 def csv_to_json(infile, outfile):
     """This function converts a CSV-formatted file into a JSON-formatted file."""
     #TO DO
-    df = pd.read_csv(infile, quotechar='"')  ### Changed by Emma
+    df = pd.read_csv(infile, quotechar='\"')  ### Changed by Emma
     outfile = df.to_json(infile)        ### Changed by Emma
     print("Converted CSV file (" + infile + ") to JSON (" + outfile + ")")
 
