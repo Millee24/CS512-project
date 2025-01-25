@@ -74,6 +74,8 @@ def write_csv(data_list, outfile):
 def csv_to_json(infile, outfile):
     """This function converts a CSV-formatted file into a JSON-formatted file."""
     #TO DO
+    df = pd.read_csv(infile, quotechar='"')  ### Changed by Emma
+    outfile = df.to_json(infile)        ### Changed by Emma
     print("Converted CSV file (" + infile + ") to JSON (" + outfile + ")")
 
 
@@ -81,10 +83,10 @@ def write_json(data_list, outfile):
     """This function takes a list of lists(?) and writes a JSON-formatted file."""
     print("Saving file to JSON")
     # TO DO
-    # # Save data to a JSON file
-    # outfile = "scotus_data_" + str(i) + ".json" 
-    # with open (outfile, "w") as outfile:
-    #     json.dump(scotus_data, outfile)
+    # Save data to a JSON file
+    outfile = "scotus_data_" + str(i) + ".json" 
+    with open (outfile, "w") as outfile:
+        json.dump(scotus_data, outfile)
 
 
 def json_to_csv(infile, outfile):
