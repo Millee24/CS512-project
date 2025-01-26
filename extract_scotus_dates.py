@@ -5,8 +5,8 @@ from datetime import datetime
 
 def main():
     #range of years of SCOTUS data to get
-    start_year = 2019
-    end_year = 2020
+    start_year = 2017
+    end_year = 2024
     #variable to store dates for SCOTUS trials
     scotus_dates = []
 
